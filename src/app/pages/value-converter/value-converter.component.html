@@ -1,0 +1,37 @@
+<h1>Value Converter 🧮</h1>
+<form>
+  <fieldset>
+    <label>From </label>
+    <app-select
+      [options]="optionCodes"
+      [(value)]="fromCurrency"
+      (valueChange)="updateFromCurrency($event)"
+    />
+    <label> To </label>
+    <app-select
+      [options]="optionCodes"
+      [(value)]="toCurrency"
+      (valueChange)="updateToCurrency($event)"
+    />
+  </fieldset>
+  <fieldset>
+  <label>Value </label>
+  <input
+    type="text"
+    [(ngModel)]="value"
+    name="value"
+    (input)="updateValue($event)"
+  />
+  {{ converter.getCurrencyConfig(fromCurrency)?.symbol }}
+  =
+  {{ outputValue | currency : "" : "" }}
+  {{ converter.getCurrencyConfig(toCurrency)?.symbol }}
+  </fieldset>
+</form>
+<hr />
+<app-table
+  [data]="rates$ | async"
+  [columns]="['flag', 'id', 'value', 'symbol']"
+  [currencyVal]="value"
+  [currencyCols]="['value']"
+></app-table>

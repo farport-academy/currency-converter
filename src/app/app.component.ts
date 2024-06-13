@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CURRENCY_URL } from '../config/currency.config';
+import { CURRENCY_URL } from './core/config/currency.config';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,9 +13,6 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'currency-converter';
-  apiUrl = inject(CURRENCY_URL)
-  http = inject(HttpClient)
 
-  data$ = this.http.get(this.apiUrl+"/EUR")
 
 }

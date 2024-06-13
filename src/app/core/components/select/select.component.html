@@ -1,0 +1,7 @@
+<select [(ngModel)]="value" name="toCurrency" (change)="setSelectedValue($event)">
+    @for(option of keys ; track option){
+      <option [value]="option">
+        {{options[option]}}
+    </option>
+    }
+  </select>

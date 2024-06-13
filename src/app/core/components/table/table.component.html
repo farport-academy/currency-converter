@@ -1,0 +1,17 @@
+<table>
+    @for(item of data; track $index){
+        <tr>
+            @for(column of columns; track $index){
+                @if(currencyCols.includes(column)){
+                    <td>{{ currencyVal * item[column] | currency:'':'' }}</td>
+                }@else {
+                    <td>{{ item[column] }}</td>
+                }
+            }
+        </tr>
+    } @empty {
+        <tr>
+            <td>No data</td>
+        </tr>
+    }
+</table>
